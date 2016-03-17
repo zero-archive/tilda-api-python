@@ -24,6 +24,10 @@ class TildaError(Exception):
     def __init__(self, message):
         super(TildaError, self).__init__()
 
+        self.status = message.get('status', '')
+        self.message = message.get('message', '')
+        self.errorside = message.get('errorside', '')
+
     def __str__(self):
         return '%s' % (self.message)
 

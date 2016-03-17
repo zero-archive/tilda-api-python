@@ -37,7 +37,7 @@ class Client(object):
         self.public = public
         self.secret = secret
 
-    def _request(self, url, params=None):
+    def _request(self, method, params=None):
         payload = {
             'publickey': self.public,
             'secretkey': self.secret
@@ -47,10 +47,15 @@ class Client(object):
             payload.update(params)
 
         try:
-            response = urllib2.urlopen(ENDPOINT + url + '?' + urllib.urlencode(payload))
-            data = json.load(response)
-        except urllib2.URLError:
-            raise NetworkError('URLError: %s' % url)
+            url = ENDPOINT + method + '?' + urllib.urlencode(payload)
+            response = urllib2.urlopen(url)
+        except urllib2.URLError as e:
+            response = e
+
+        try:
+            data = json.loads(response.read())
+        except ValueError as e:
+            raise NetworkError('Invalid server response: %s' % e)
 
         if data.get('status') != STATUS_OK:
             raise TildaError(data)
