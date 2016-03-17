@@ -21,8 +21,17 @@
 # SOFTWARE.
 
 import json
-import urllib
-import urllib2
+
+try:
+    # python3
+    from urllib.request import urlopen
+    from urllib.error import URLError
+    from urllib.parse import urlencode
+except ImportError:
+    # python2
+    from urllib2 import urlopen, URLError
+    from urllib import urlencode
+
 from tilda.project import TildaProject
 from tilda.page import TildaPage
 from tilda.error import TildaError, NetworkError
@@ -47,13 +56,14 @@ class Client(object):
             payload.update(params)
 
         try:
-            url = ENDPOINT + method + '?' + urllib.urlencode(payload)
-            response = urllib2.urlopen(url)
-        except urllib2.URLError as e:
+            url = ENDPOINT + method + '?' + urlencode(payload)
+            response = urlopen(url)
+        except URLError as e:
             response = e
 
         try:
-            data = json.loads(response.read())
+            json_data = response.read()
+            data = json.loads(json_data.decode('utf-8'))
         except ValueError as e:
             raise NetworkError('Invalid server response')
 
