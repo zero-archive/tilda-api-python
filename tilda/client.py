@@ -55,7 +55,7 @@ class Client(object):
         try:
             data = json.loads(response.read())
         except ValueError as e:
-            raise NetworkError('Invalid server response: %s' % e)
+            raise NetworkError('Invalid server response')
 
         if data.get('status') != STATUS_OK:
             raise TildaError(data)

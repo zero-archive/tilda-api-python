@@ -20,13 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-class TildaProject(object):
+from tilda.base import TildaBase
+
+
+class TildaProject(TildaBase):
     def __init__(self, *args, **kwargs):
         # Basic fields
         self.id = int(kwargs.get('id', 0))
         self.title = kwargs.get('title', '')
         self.descr = kwargs.get('descr', '')
-        self.customdomain = kwargs.get('customdomain')
+        self.customdomain = kwargs.get('customdomain', '')
         self.css = kwargs.get('css', list)
         self.js = kwargs.get('js', list)
         # Export fields

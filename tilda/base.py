@@ -20,31 +20,56 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tilda.base import TildaBase
+import json
+from datetime import datetime
 
 
-class TildaPage(TildaBase):
-    def __init__(self, *args, **kwargs):
-        # Basic fields
-        self.id = int(kwargs.get('id', 0))
-        self.projectid = int(kwargs.get('projectid', 0))
-        self.title = kwargs.get('title', '')
-        self.descr = kwargs.get('descr', '')
-        self.img = kwargs.get('img', '')
-        self.featureimg = kwargs.get('featureimg', '')
-        self.alias = kwargs.get('alias', '')
-        self.date = self._fromdatestring(kwargs.get('date'))
-        self.sort = int(kwargs.get('sort', 0))
-        self.published = self._fromtimestamp(kwargs.get('published'))
-        self.filename = kwargs.get('filename', '')
-        self.html = kwargs.get('html', '')
-        # Export fields
-        self.css = kwargs.get('css', list)
-        self.js = kwargs.get('js', list)
-        self.images = kwargs.get('images', list)
+class TildaBase(object):
+    @staticmethod
+    def _fromdatestring(string_date):
+        """
+        Args:
+            string_date (string):
+        Returns:
+            datetime.datetime:
+        """
+        if not string_date:
+            return None
 
-    def __str__(self):
-        return '(%d) %s' % (self.id, self.title)
+        return datetime.strptime(string_date, '%Y-%m-%d %H:%M:%S')
 
-    def __repl__(self):
-        return '%s(%r)' % (self.__class__, self.__dict__)
+    @staticmethod
+    def _fromtimestamp(unixtime):
+        """
+        Args:
+            unixtime (string):
+        Returns:
+            datetime.datetime:
+        """
+        if not unixtime:
+            return None
+
+        return datetime.fromtimestamp(int(unixtime))
+
+    def to_json(self):
+        """
+        Returns:
+            str:
+        """
+        return json.dumps(self.to_dict())
+
+    def to_dict(self):
+        """
+        Returns:
+            dict:
+        """
+        data = dict()
+
+        for key, value in self.__dict__.items():
+            if value:
+                if hasattr(value, 'to_dict'):
+                    data[key] = value.to_dict()
+                else:
+                    data[key] = value
+
+        return data
