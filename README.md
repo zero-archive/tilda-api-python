@@ -28,19 +28,82 @@ The project provides an almost exhaustive access to the Tilda.cc API, through an
 
 You can install tilda-api-python using:
 
-```bash
-pip install tilda-api
-```
+    pip install tilda-api
 
 ### From source
 
-```bash
-git clone https://github.com/dotzero/tilda-api-python
-cd tilda-api-python
-python setup.py install --user  # to install in the user directory (~/.local)
-sudo python setup.py install    # to install globally
-```
+    git clone https://github.com/dotzero/tilda-api-python
+    cd tilda-api-python
+    python setup.py install
 
 ## Usage
 
-TODO
+To create an instance of the tilda.Client:
+
+    >>> import tilda
+    >>> api = tilda.Client(public='000000000000', secret='999999999999')
+
+To get projects list:
+
+    >>> projects = api.get_projects_list()
+    >>> projects[0].to_dict()
+    ... or
+    >>> projects[0].id
+    >>> projects[0].title
+
+To get project info:
+
+    >>> project = api.get_project(project_id=00000)
+    >>> project.to_dict()
+    ... or
+    >>> project.id
+    >>> project.title
+
+To get project info for export:
+
+    >>> project = api.get_project_export(project_id=00000)
+    >>> project.to_dict()
+    ... or
+    >>> project.id
+    >>> project.title
+
+To get pages list:
+
+    >>> pages = api.get_pages_list(project_id=00000)
+    >>> pages[0].to_dict()
+    ... or
+    >>> pages[0].id
+    >>> pages[0].title
+
+To get short page info and body html code:
+
+    >>> page = api.get_page(page_id=00000)
+    >>> page.to_dict()
+    ... or
+    >>> page.title
+    >>> page.html
+
+To get full page info and full html code:
+
+    >>> page = api.get_page_full(page_id=00000)
+    >>> page.to_dict()
+    ... or
+    >>> page.title
+    >>> page.html
+
+To get short page info for export and body html code:
+
+    >>> page = api.get_page_export(page_id=00000)
+    >>> page.to_dict()
+    ... or
+    >>> page.title
+    >>> page.html
+
+To get full page info for export and body html code:
+
+    >>> page = api.get_page_full_export(page_id=00000)
+    >>> page.to_dict()
+    ... or
+    >>> page.title
+    >>> page.html
+
