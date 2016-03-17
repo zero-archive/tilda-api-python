@@ -26,7 +26,7 @@ The project provides an almost exhaustive access to the Tilda.cc API, through an
 
 ### From Pypi
 
-You can install python-telegram-bot using:
+You can install tilda-api-python using:
 
 ```bash
 pip install tilda-api
