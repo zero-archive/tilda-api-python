@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -83,7 +83,8 @@ class Client(object):
     def get_project(self, project_id):
         """ Get project info """
         try:
-            result = self._request('/getproject/', {'projectid': project_id})
+            result = self._request('/getproject/',
+                                   {'projectid': project_id})
             return TildaProject(**result)
         except NetworkError:
             return []
@@ -91,7 +92,8 @@ class Client(object):
     def get_project_export(self, project_id):
         """ Get project info for export """
         try:
-            result = self._request('/getprojectexport/', {'projectid': project_id})
+            result = self._request('/getprojectexport/',
+                                   {'projectid': project_id})
             return TildaProject(**result)
         except NetworkError:
             return []
@@ -99,7 +101,8 @@ class Client(object):
     def get_pages_list(self, project_id):
         """ Get pages list """
         try:
-            result = self._request('/getpageslist/', {'projectid': project_id})
+            result = self._request('/getpageslist/',
+                                   {'projectid': project_id})
             return [TildaPage(**p) for p in result]
         except NetworkError:
             return []
@@ -107,7 +110,8 @@ class Client(object):
     def get_page(self, page_id):
         """ Get short page info and body html code """
         try:
-            result = self._request('/getpage/', {'pageid': page_id})
+            result = self._request('/getpage/',
+                                   {'pageid': page_id})
             return TildaPage(**result)
         except NetworkError:
             return []
@@ -115,7 +119,8 @@ class Client(object):
     def get_page_full(self, page_id):
         """ Get full page info and full html code """
         try:
-            result = self._request('/getpagefull/', {'pageid': page_id})
+            result = self._request('/getpagefull/',
+                                   {'pageid': page_id})
             return TildaPage(**result)
         except NetworkError:
             return []
@@ -123,7 +128,8 @@ class Client(object):
     def get_page_export(self, page_id):
         """ Get short page info for export and body html code """
         try:
-            result = self._request('/getpageexport/', {'pageid': page_id})
+            result = self._request('/getpageexport/',
+                                   {'pageid': page_id})
             return TildaPage(**result)
         except NetworkError:
             return []
@@ -131,7 +137,8 @@ class Client(object):
     def get_page_full_export(self, page_id):
         """ Get full page info for export and body html code """
         try:
-            result = self._request('/getpagefullexport/', {'pageid': page_id})
+            result = self._request('/getpagefullexport/',
+                                   {'pageid': page_id})
             return TildaPage(**result)
         except NetworkError:
             return []

@@ -10,8 +10,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -25,12 +25,11 @@
 
 import unittest
 import sys
+import tilda
 from datetime import datetime
+from tests.base import BaseTest
 
 sys.path.append('.')
-
-import tilda
-from tests.base import BaseTest
 
 
 class TildaPageTest(BaseTest, unittest.TestCase):
@@ -43,7 +42,7 @@ class TildaPageTest(BaseTest, unittest.TestCase):
             "title":"Page",
             "descr":"Blog post",
             "img":"https:\/\/ucarecdn.com\/covermain.jpg",
-            "featureimg":"https:\/\/ucarecdn.com\/featureimg.jpg",
+            "featureimg":"http:\/\/ucarecdn.com\/featureimg.jpg",
             "alias":"post",
             "date":"2016-03-14 17:59:12",
             "sort":"30",
@@ -86,7 +85,7 @@ class TildaPageTest(BaseTest, unittest.TestCase):
         self.assertEqual(page.title, 'Page')
         self.assertEqual(page.descr, 'Blog post')
         self.assertEqual(page.img, 'https://ucarecdn.com/covermain.jpg')
-        self.assertEqual(page.featureimg, 'https://ucarecdn.com/featureimg.jpg')
+        self.assertEqual(page.featureimg, 'http://ucarecdn.com/featureimg.jpg')
         self.assertEqual(page.alias, 'post')
         self.assertTrue(isinstance(page.date, datetime))
         self.assertEqual(page.sort, 30)
@@ -103,15 +102,18 @@ class TildaPageTest(BaseTest, unittest.TestCase):
 
         self.assertTrue(self.is_dict(page_dict))
         self.assertEqual(page_dict['id'], int(self.response['id']))
-        self.assertEqual(page_dict['projectid'], int(self.response['projectid']))
+        self.assertEqual(page_dict['projectid'],
+                         int(self.response['projectid']))
         self.assertEqual(page_dict['title'], self.response['title'])
         self.assertEqual(page_dict['descr'], self.response['descr'])
         self.assertEqual(page_dict['img'], self.response['img'])
         self.assertEqual(page_dict['featureimg'], self.response['featureimg'])
         self.assertEqual(page_dict['alias'], self.response['alias'])
-        self.assertEqual(page_dict['date'].strftime('%Y-%m-%d %H:%M:%S'), self.response['date'])
+        self.assertEqual(page_dict['date'].strftime('%Y-%m-%d %H:%M:%S'),
+                         self.response['date'])
         self.assertEqual(page_dict['sort'], int(self.response['sort']))
-        self.assertEqual(page_dict['published'].strftime('%s'), self.response['published'])
+        self.assertEqual(page_dict['published'].strftime('%s'),
+                         self.response['published'])
         self.assertEqual(page_dict['filename'], self.response['filename'])
         self.assertEqual(page_dict['html'], self.response['html'])
 

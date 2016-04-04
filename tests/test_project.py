@@ -10,8 +10,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -25,11 +25,10 @@
 
 import unittest
 import sys
-
-sys.path.append('.')
-
 import tilda
 from tests.base import BaseTest
+
+sys.path.append('.')
 
 
 class TildaProjectTest(BaseTest, unittest.TestCase):
@@ -97,7 +96,8 @@ class TildaProjectTest(BaseTest, unittest.TestCase):
         self.assertEqual(project_dict['id'], int(self.response['id']))
         self.assertEqual(project_dict['title'], self.response['title'])
         self.assertEqual(project_dict['descr'], self.response['descr'])
-        self.assertEqual(project_dict['customdomain'], self.response['customdomain'])
+        self.assertEqual(project_dict['customdomain'],
+                         self.response['customdomain'])
         self.assertEqual(project_dict['css'], self.response['css'])
         self.assertEqual(project_dict['js'], self.response['js'])
 
