@@ -30,14 +30,14 @@ class TildaProject(TildaBase):
         self.title = kwargs.get('title', '')
         self.descr = kwargs.get('descr', '')
         self.customdomain = kwargs.get('customdomain', '')
-        self.css = kwargs.get('css', list)
-        self.js = kwargs.get('js', list)
+        self.css = kwargs.get('css', list())
+        self.js = kwargs.get('js', list())
         # Export fields
         self.export_csspath = kwargs.get('export_csspath', '')
         self.export_jspath = kwargs.get('export_jspath', '')
         self.export_imgpath = kwargs.get('export_imgpath', '')
         self.indexpageid = int(kwargs.get('indexpageid', 0))
-        self.images = kwargs.get('images', list)
+        self.images = kwargs.get('images', list())
         self.htaccess = kwargs.get('htaccess', '')
 
     def __str__(self):

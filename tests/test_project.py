@@ -64,13 +64,13 @@ class TildaProjectTest(BaseTest, unittest.TestCase):
         self.assertEqual(project.title, '')
         self.assertEqual(project.descr, '')
         self.assertEqual(project.customdomain, '')
-        self.assertEqual(project.css, list)
-        self.assertEqual(project.js, list)
+        self.assertEqual(project.css, list())
+        self.assertEqual(project.js, list())
         self.assertEqual(project.export_csspath, '')
         self.assertEqual(project.export_jspath, '')
         self.assertEqual(project.export_imgpath, '')
         self.assertEqual(project.indexpageid, 0)
-        self.assertEqual(project.images, list)
+        self.assertEqual(project.images, list())
         self.assertEqual(project.htaccess, '')
 
     def test_project_init_non_empty(self):
@@ -100,6 +100,14 @@ class TildaProjectTest(BaseTest, unittest.TestCase):
         self.assertEqual(project_dict['customdomain'], self.response['customdomain'])
         self.assertEqual(project_dict['css'], self.response['css'])
         self.assertEqual(project_dict['js'], self.response['js'])
+
+    def test_project_to_json(self):
+        """Test TildaProject.to_json() method"""
+        print('Testing TildaProject.to_json()')
+
+        project = tilda.TildaProject(**self.response)
+
+        self.assertTrue(self.is_json(project.to_json()))
 
 
 if __name__ == '__main__':

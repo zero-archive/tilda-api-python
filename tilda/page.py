@@ -39,9 +39,9 @@ class TildaPage(TildaBase):
         self.filename = kwargs.get('filename', '')
         self.html = kwargs.get('html', '')
         # Export fields
-        self.css = kwargs.get('css', list)
-        self.js = kwargs.get('js', list)
-        self.images = kwargs.get('images', list)
+        self.css = kwargs.get('css', list())
+        self.js = kwargs.get('js', list())
+        self.images = kwargs.get('images', list())
 
     def __str__(self):
         return '(%d) %s' % (self.id, self.title)

@@ -71,9 +71,9 @@ class TildaPageTest(BaseTest, unittest.TestCase):
         self.assertEqual(page.published, None)
         self.assertEqual(page.filename, '')
         self.assertEqual(page.html, '')
-        self.assertEqual(page.css, list)
-        self.assertEqual(page.js, list)
-        self.assertEqual(page.images, list)
+        self.assertEqual(page.css, list())
+        self.assertEqual(page.js, list())
+        self.assertEqual(page.images, list())
 
     def test_page_init_non_empty(self):
         """Test TildaPage.__init__() method"""
@@ -114,6 +114,14 @@ class TildaPageTest(BaseTest, unittest.TestCase):
         self.assertEqual(page_dict['published'].strftime('%s'), self.response['published'])
         self.assertEqual(page_dict['filename'], self.response['filename'])
         self.assertEqual(page_dict['html'], self.response['html'])
+
+    def test_page_to_json(self):
+        """Test TildaPage.to_json() method"""
+        print('Testing TildaPage.to_json()')
+
+        page = tilda.TildaPage(**self.response)
+
+        self.assertTrue(self.is_json(page.to_json()))
 
 
 if __name__ == '__main__':
