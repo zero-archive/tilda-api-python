@@ -26,5 +26,5 @@ from .page import TildaPage
 from .error import TildaError
 
 __author__ = 'mail@dotzero.ru'
-__version__ = '0.1'
+__version__ = '0.2'
 __all__ = ('Client', 'TildaProject', 'TildaPage', 'TildaError')

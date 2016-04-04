@@ -31,7 +31,7 @@ def read(*paths):
 
 setup(
     name='tilda-api',
-    version='0.1',
+    version='0.2',
     description='A python implementation of the Tilda.cc API',
     long_description=(read('README.md')),
     author='dotzero',

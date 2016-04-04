@@ -1,6 +1,6 @@
 # Python Tilda.cc API
 
-![Build Status](https://travis-ci.org/dotzero/tilda-api-python.svg?branch=master)
+[![Build Status](https://travis-ci.org/dotzero/tilda-api-python.svg?branch=master)](https://travis-ci.org/dotzero/tilda-api-python)
 
 As complete as possible implementation of Tilda.cc API.
 
