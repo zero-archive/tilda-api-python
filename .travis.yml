@@ -7,7 +7,12 @@ python:
   - "3.4"
 
 install:
+  - pip install coveralls
   - pip install -r requirements-dev.txt
 
 script:
-  - nosetests -v
+  - nosetests -v --with-coverage --cover-package=tilda/
+  - flake8 tilda
+
+after_success:
+  coveralls

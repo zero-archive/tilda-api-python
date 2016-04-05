@@ -1,0 +1,5 @@
+[run]
+source = tilda
+
+[report]
+omit = tests/
