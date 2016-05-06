@@ -3,6 +3,7 @@
 [![PyPI](https://img.shields.io/pypi/v/tilda-api.svg)](https://pypi.python.org/pypi/tilda-api)
 [![Build Status](https://travis-ci.org/dotzero/tilda-api-python.svg?branch=master)](https://travis-ci.org/dotzero/tilda-api-python)
 [![Coverage Status](https://coveralls.io/repos/github/dotzero/tilda-api-python/badge.svg?branch=master)](https://coveralls.io/github/dotzero/tilda-api-python?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dotzero/tilda-api-python/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dotzero/tilda-api-python/?branch=master)
 
 As complete as possible implementation of Tilda.cc API.
 
