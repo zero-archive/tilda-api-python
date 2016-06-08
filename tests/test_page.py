@@ -93,6 +93,16 @@ class TildaPageTest(BaseTest, unittest.TestCase):
         self.assertEqual(page.filename, 'page54321.html')
         self.assertEqual(page.html, '<html>')
 
+    def test_page_str(self):
+        """Test TildaPage.__str__() method"""
+        print('Testing TildaPage.__str__()')
+
+        page = tilda.TildaPage(**self.response)
+
+        # self.assertEqual(page.id, 54321)
+        print str(page)
+
+
     def test_page_to_dict(self):
         """Test TildaPage.to_dict() method"""
         print('Testing TildaPage.to_dict()')
