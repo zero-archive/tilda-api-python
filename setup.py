@@ -20,23 +20,56 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+
 import os
-from setuptools import setup, find_packages
+import re
+import codecs
+
+here = os.path.abspath(os.path.dirname(__file__))
 
 
-def read(*paths):
+def find_version(*paths):
+    """Read the version number from a source file."""
+    # Open in Latin-1 so that we avoid encoding errors.
+    # Use codecs.open for Python 2 compatibility
+    with codecs.open(os.path.join(here, *paths), 'r', 'latin1') as f:
+        version_file = f.read()
+
+    # The version line must have the form
+    # __version__ = 'ver'
+    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                              version_file, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError('Unable to find version string')
+
+
+def read_description(*paths):
     """Build a file path from *paths* and return the contents."""
     with open(os.path.join(*paths), 'r') as f:
         return f.read()
 
+
+def read_requirements(filename):
+    try:
+        with open(filename) as f:
+            return f.read().splitlines()
+    except IOError:
+        raise IOError(os.getcwd())
+
+
 setup(
     name='tilda-api',
-    version='0.2',
+    version=find_version('tilda', '__init__.py'),
+    url='https://github.com/dotzero/tilda-api-python',
     description='A python implementation of the Tilda.cc API',
-    long_description=(read('README.md')),
+    long_description=read_description('README.md'),
     author='dotzero',
     author_email='mail@dotzero.ru',
-    url='https://github.com/dotzero/tilda-api-python',
     license='MIT',
-    packages=find_packages(exclude=['tests*']),
-    )
+    packages=['tilda']
+)
