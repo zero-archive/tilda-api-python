@@ -43,5 +43,5 @@ class TildaProject(TildaBase):
     def __str__(self):
         return '(%d) %s' % (self.id, self.title)
 
-    def __repl__(self):
+    def __repr__(self):
         return '%s(%r)' % (self.__class__, self.__dict__)
