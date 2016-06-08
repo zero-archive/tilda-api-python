@@ -107,7 +107,7 @@ class TildaPageTest(BaseTest, unittest.TestCase):
 
         page = tilda.TildaPage(**self.response)
 
-        self.assertIn('tilda.page.TildaPage', repr(page))
+        self.assertTrue('tilda.page.TildaPage' in repr(page))
 
     def test_page_to_dict(self):
         """Test TildaPage.to_dict() method"""

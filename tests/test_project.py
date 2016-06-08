@@ -99,7 +99,7 @@ class TildaProjectTest(BaseTest, unittest.TestCase):
 
         project = tilda.TildaProject(**self.response)
 
-        self.assertIn('tilda.project.TildaProject', repr(project))
+        self.assertTrue('tilda.project.TildaProject' in repr(project))
 
     def test_project_to_dict(self):
         """Test TildaProject.to_dict() method"""
