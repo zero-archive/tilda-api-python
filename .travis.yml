@@ -7,7 +7,7 @@ python:
   - "3.4"
 
 install:
-  - pip install coveralls
+  - pip install scrutinizer-ocular
   - pip install -r requirements-dev.txt
 
 script:
@@ -15,4 +15,4 @@ script:
   - flake8 tilda
 
 after_success:
-  coveralls
+  - ocular --data-file ".coverage" --config-file ".coveragerc"
