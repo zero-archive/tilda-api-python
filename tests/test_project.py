@@ -85,6 +85,22 @@ class TildaProjectTest(BaseTest, unittest.TestCase):
         self.assertEqual(len(project.css), 2)
         self.assertEqual(len(project.js), 4)
 
+    def test_project_str(self):
+        """Test TildaProject.__str__() method"""
+        print('Testing TildaProject.__str__()')
+
+        project = tilda.TildaProject(**self.response)
+
+        self.assertEqual(str(project), '(12345) Blog')
+
+    def test_project_repr(self):
+        """Test TildaProject.__repr__() method"""
+        print('Testing TildaProject.__repr__()')
+
+        project = tilda.TildaProject(**self.response)
+
+        self.assertIn('tilda.project.TildaProject', repr(project))
+
     def test_project_to_dict(self):
         """Test TildaProject.to_dict() method"""
         print('Testing TildaProject.to_dict()')

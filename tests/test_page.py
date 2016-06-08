@@ -99,9 +99,15 @@ class TildaPageTest(BaseTest, unittest.TestCase):
 
         page = tilda.TildaPage(**self.response)
 
-        # self.assertEqual(page.id, 54321)
-        print str(page)
+        self.assertEqual(str(page), '(54321) Page')
 
+    def test_page_repr(self):
+        """Test TildaPage.__repr__() method"""
+        print('Testing TildaPage.__repr__()')
+
+        page = tilda.TildaPage(**self.response)
+
+        self.assertIn('tilda.page.TildaPage', repr(page))
 
     def test_page_to_dict(self):
         """Test TildaPage.to_dict() method"""
