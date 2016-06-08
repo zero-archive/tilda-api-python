@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # Copyright (c) 2016 dotzero <mail@dotzero.ru>
@@ -20,18 +21,44 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""This module contains a object that represents Tests for TildaError"""
 
-class TildaError(Exception):
-    def __init__(self, message=dict()):
-        super(TildaError, self).__init__()
+import unittest
+import sys
+from tilda import TildaError
+from tests.base import BaseTest
 
-        self.status = message.get('status', '')
-        self.message = message.get('message', '')
-        self.errorside = message.get('errorside', '')
-
-    def __str__(self):
-        return '%s' % (self.message)
+sys.path.append('.')
 
 
-class NetworkError(TildaError):
-    pass
+class TildaErrorTest(BaseTest, unittest.TestCase):
+    """This object represents Tests for TildaError."""
+
+    def test_page_init(self):
+        """Test TildaError.__init__() method"""
+        print('Testing TildaError.__init__()')
+
+        try:
+            raise TildaError()
+        except TildaError as e:
+            self.assertEqual(e.status, '')
+            self.assertEqual(e.message, '')
+            self.assertEqual(e.errorside, '')
+
+    def test_page_str(self):
+        """Test TildaError.__str__() method"""
+        print('Testing TildaError.__str__()')
+
+        try:
+            raise TildaError({
+                'status': 200,
+                'message': 'OK',
+            })
+        except TildaError as e:
+            self.assertEqual(e.status, 200)
+            self.assertEqual(e.message, 'OK')
+            self.assertEqual(str(e), 'OK')
+
+
+if __name__ == '__main__':
+    unittest.main()
