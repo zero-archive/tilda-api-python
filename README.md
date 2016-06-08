@@ -1,6 +1,7 @@
 # Python Tilda.cc API
 
 [![PyPI](https://img.shields.io/pypi/v/tilda-api.svg)](https://pypi.python.org/pypi/tilda-api)
+[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://travis-ci.org/dotzero/tilda-api-python)
 [![Build Status](https://travis-ci.org/dotzero/tilda-api-python.svg?branch=master)](https://travis-ci.org/dotzero/tilda-api-python)
 [![Code Coverage](https://scrutinizer-ci.com/g/dotzero/tilda-api-python/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/dotzero/tilda-api-python/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dotzero/tilda-api-python/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dotzero/tilda-api-python/?branch=master)
