@@ -48,10 +48,9 @@ def find_version(*paths):
     raise RuntimeError('Unable to find version string')
 
 
-def read_description(*paths):
-    """Build a file path from *paths* and return the contents."""
-    with open(os.path.join(*paths), 'r') as f:
-        return f.read()
+def read_description(filename):
+    """Return the contents of filename."""
+    return open(os.path.join(os.path.dirname(__file__), filename)).read()
 
 
 def read_requirements(filename):
